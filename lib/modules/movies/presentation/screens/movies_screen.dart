@@ -1,40 +1,119 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/modules/movies/data/datasource/movie_remote_data_source.dart';
-import 'package:movies_app/modules/movies/data/repository/movies_respository.dart';
-import 'package:movies_app/modules/movies/domain/entities/movie.dart';
-import 'package:movies_app/modules/movies/domain/repository/base_movies_repositoy.dart';
-import 'package:movies_app/modules/movies/domain/usecases/get_now_playing_movies_usease.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:movies_app/core/services/services_locator.dart';
+import 'package:movies_app/modules/movies/presentation/components/now_playing_movies_components.dart';
+import 'package:movies_app/modules/movies/presentation/components/popular_movies_components.dart';
+import 'package:movies_app/modules/movies/presentation/components/top_rated_movies_components.dart';
+import 'package:movies_app/modules/movies/presentation/controller/movies_bloc.dart';
 
-class MoviesScreen extends StatefulWidget {
-  const MoviesScreen({super.key});
-
-  @override
-  State<MoviesScreen> createState() => _MoviesScreenState();
-}
-
-class _MoviesScreenState extends State<MoviesScreen> {
-  List<Movie> movies = [];
-  @override
-  void initState() {
-    super.initState();
-    _getData();
-  }
-
-  void _getData() async {
-    BaseMovieRemoteDataSource baseMovieRemoteDataSource =
-        MovieRemoteDataSource();
-    BaseMoviesRepository baseMoviesRepository =
-        MoviesRepository(baseMovieRemoteDataSource);
-    final result =
-        await GetNowPlayingMoviesUseCase(baseMoviesRepository).execute();
-    result.fold((l) {}, (r) {
-      movies = r;
-    });
-    debugPrint(movies.toString());
-  }
+class MainMoviesScreen extends StatelessWidget {
+  const MainMoviesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return BlocProvider(
+      create: (context) => sl<MoviesBloc>(),
+      child: Scaffold(
+        backgroundColor: Colors.grey.shade900,
+        body: SingleChildScrollView(
+          key: const Key('movieScrollView'),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const NowPlayingMoviesComponents(),
+              Container(
+                margin: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Popular",
+                      style: GoogleFonts.poppins(
+                        fontSize: 19,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0.15,
+                        color: Colors.white,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        /// TODO : NAVIGATION TO POPULAR SCREEN
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: const [
+                            Text(
+                              'See More',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              size: 16.0,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const PopularMoviesComponents(),
+              Container(
+                margin: const EdgeInsets.fromLTRB(
+                  16.0,
+                  24.0,
+                  16.0,
+                  8.0,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Top Rated",
+                      style: GoogleFonts.poppins(
+                        fontSize: 19,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0.15,
+                        color: Colors.white,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        /// TODO : NAVIGATION TO Top Rated Movies Screen
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: const [
+                            Text(
+                              'See More',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              size: 16.0,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const TopRatedMoviesComponents(),
+              const SizedBox(height: 50.0),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
