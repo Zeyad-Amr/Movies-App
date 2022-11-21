@@ -7,6 +7,7 @@ import 'package:movies_app/core/network/api_constants.dart';
 import 'package:movies_app/core/utils/enums.dart';
 import 'package:movies_app/modules/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/modules/movies/presentation/controller/movies_state.dart';
+import 'package:movies_app/modules/movies/presentation/screens/movie_detail_screen.dart';
 
 class NowPlayingMoviesComponents extends StatelessWidget {
   const NowPlayingMoviesComponents({super.key});
@@ -40,9 +41,12 @@ class NowPlayingMoviesComponents extends StatelessWidget {
                     return GestureDetector(
                       key: const Key('openMovieMinimalDetail'),
                       onTap: () {
-                        debugPrint("Now Playing Movie: ${item.title}");
-
-                        /// TODO : NAVIGATE TO MOVIE DETAILS
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                MovieDetailScreen(id: item.id),
+                          ),
+                        );
                       },
                       child: Stack(
                         children: [
@@ -67,7 +71,7 @@ class NowPlayingMoviesComponents extends StatelessWidget {
                             child: CachedNetworkImage(
                               height: 560.0,
                               imageUrl:
-                                  APIConstants.imageUrl(item.backDropPath),
+                                  APIConstants.imageUrl(item.backdropPath),
                               fit: BoxFit.cover,
                             ),
                           ),

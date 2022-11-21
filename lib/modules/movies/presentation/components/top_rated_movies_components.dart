@@ -6,6 +6,7 @@ import 'package:movies_app/core/network/api_constants.dart';
 import 'package:movies_app/core/utils/enums.dart';
 import 'package:movies_app/modules/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/modules/movies/presentation/controller/movies_state.dart';
+import 'package:movies_app/modules/movies/presentation/screens/movie_detail_screen.dart';
 import 'package:shimmer/shimmer.dart';
 
 class TopRatedMoviesComponents extends StatelessWidget {
@@ -42,7 +43,12 @@ class TopRatedMoviesComponents extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
                         onTap: () {
-                          /// TODO : NAVIGATE TO  MOVIE DETAILS
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  MovieDetailScreen(id: movie.id),
+                            ),
+                          );
                         },
                         child: ClipRRect(
                           borderRadius:
@@ -50,7 +56,7 @@ class TopRatedMoviesComponents extends StatelessWidget {
                           child: CachedNetworkImage(
                             width: 120.0,
                             fit: BoxFit.cover,
-                            imageUrl: APIConstants.imageUrl(movie.backDropPath),
+                            imageUrl: APIConstants.imageUrl(movie.backdropPath),
                             placeholder: (context, url) => Shimmer.fromColors(
                               baseColor: Colors.grey[850]!,
                               highlightColor: Colors.grey[800]!,
