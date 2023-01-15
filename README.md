@@ -8,8 +8,7 @@
 - Dealing with shimmer, get_it , animate_do and dartz packages.
 
 ## Project Demo
-
-<img src="https://github.com/Zeyad-Amr/Movies-App/blob/main/screenshots/demo.gif" width="50%"/>
+https://user-images.githubusercontent.com/68791488/212573576-60c69cf8-1d9d-420c-9ebe-ae9b0bc3a8b8.mp4
 
 ## Project Structure
 ![alt text](/screenshots/caf.png)
