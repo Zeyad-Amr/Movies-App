@@ -5,6 +5,15 @@ import 'package:movies_app/modules/movies/domain/entities/movie_details.dart';
 import 'package:movies_app/modules/movies/domain/entities/recommendation.dart';
 
 class MovieDetailsState extends Equatable {
+  const MovieDetailsState({
+    this.movieDetailsMessage = '',
+    this.recommendation = const [],
+    this.recommendationState = RequestState.loading,
+    this.movieDetails,
+    this.movieDetailsState = RequestState.loading,
+    this.recommendationsMessage = '',
+  });
+
   /// movie details state
   final MovieDetails? movieDetails;
   final RequestState movieDetailsState;
@@ -14,15 +23,6 @@ class MovieDetailsState extends Equatable {
   final List<Recommendation> recommendation;
   final RequestState recommendationState;
   final String recommendationsMessage;
-
-  const MovieDetailsState({
-    this.movieDetailsMessage = '',
-    this.recommendation = const [],
-    this.recommendationState = RequestState.loading,
-    this.movieDetails,
-    this.movieDetailsState = RequestState.loading,
-    this.recommendationsMessage = '',
-  });
 
   @override
   List<Object?> get props {
@@ -50,8 +50,7 @@ class MovieDetailsState extends Equatable {
       movieDetailsMessage: movieDetailsMessage ?? this.movieDetailsMessage,
       recommendation: recommendation ?? this.recommendation,
       recommendationState: recommendationState ?? this.recommendationState,
-      recommendationsMessage:
-          recommendationsMessage ?? this.recommendationsMessage,
+      recommendationsMessage: recommendationsMessage ?? this.recommendationsMessage,
     );
   }
 }

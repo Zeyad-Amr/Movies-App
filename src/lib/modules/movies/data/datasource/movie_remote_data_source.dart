@@ -13,8 +13,7 @@ abstract class BaseMovieRemoteDataSource {
   Future<List<MovieModel>> getPopularMovies();
   Future<List<MovieModel>> getTopRatedMovies();
   Future<MovieDetailsModel> getMovieDetails(MovieDetailsParameters parameters);
-  Future<List<RecommendationModel>> getRecommendation(
-      RecommendationParameters parameters);
+  Future<List<RecommendationModel>> getRecommendation(RecommendationParameters parameters);
 }
 
 class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
@@ -23,7 +22,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
     final response = await Dio().get(APIConstants.nowPlayingMoviesPath);
     if (response.statusCode == 200) {
       return List<MovieModel>.from(
-        (response.data["results"] as List).map(
+        (response.data['results'] as List).map(
           (e) => MovieModel.fromJson(e),
         ),
       );
@@ -39,7 +38,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
     final response = await Dio().get(APIConstants.popularMoviesPath);
     if (response.statusCode == 200) {
       return List<MovieModel>.from(
-        (response.data["results"] as List).map(
+        (response.data['results'] as List).map(
           (e) => MovieModel.fromJson(e),
         ),
       );
@@ -55,7 +54,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
     final response = await Dio().get(APIConstants.topRatedMoviesPath);
     if (response.statusCode == 200) {
       return List<MovieModel>.from(
-        (response.data["results"] as List).map(
+        (response.data['results'] as List).map(
           (e) => MovieModel.fromJson(e),
         ),
       );
@@ -67,10 +66,8 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
   }
 
   @override
-  Future<MovieDetailsModel> getMovieDetails(
-      MovieDetailsParameters parameters) async {
-    final response =
-        await Dio().get(APIConstants.movieDetailsPath(parameters.id));
+  Future<MovieDetailsModel> getMovieDetails(MovieDetailsParameters parameters) async {
+    final response = await Dio().get(APIConstants.movieDetailsPath(parameters.id));
     if (response.statusCode == 200) {
       return MovieDetailsModel.fromJson(response.data);
     } else {
@@ -81,13 +78,11 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
   }
 
   @override
-  Future<List<RecommendationModel>> getRecommendation(
-      RecommendationParameters parameters) async {
-    final response =
-        await Dio().get(APIConstants.recommendationPath(parameters.id));
+  Future<List<RecommendationModel>> getRecommendation(RecommendationParameters parameters) async {
+    final response = await Dio().get(APIConstants.recommendationPath(parameters.id));
     if (response.statusCode == 200) {
-      return List<RecommendationModel>.from((response.data["results"] as List)
-          .map((e) => RecommendationModel.fromJson(e)));
+      return List<RecommendationModel>.from(
+          (response.data['results'] as List).map((e) => RecommendationModel.fromJson(e)));
     } else {
       throw ServerException(
         errorMessageModel: ErrorMessageModel.fromJson(response.data),

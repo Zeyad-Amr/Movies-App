@@ -13,8 +13,7 @@ linter:
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`
   # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at
-  # https://dart-lang.github.io/linter/lints/index.html.
+  # and their documentation is published at https://dart.dev/lints.
   #
   # Instead of disabling a lint rule for the entire project in the
   # section below, it can also be suppressed for a single line of code
@@ -22,8 +21,50 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    avoid_print: false # Uncomment to disable the `avoid_print` rule
+    prefer_single_quotes: true # Uncomment to enable the `prefer_single_quotes` rule
+    always_declare_return_types: true # Uncomment to enable the `always_declare_return_types` rule
+    prefer_const_constructors: true # Uncomment to enable the `prefer_const_constructors` rule
+    prefer_const_constructors_in_immutables: true # Uncomment to enable the `prefer_const_constructors_in_immutables` rule
+    prefer_const_declarations: true # Uncomment to enable the `prefer_const_declarations` rule
+    prefer_final_fields: true # Uncomment to enable the `prefer_final_fields` rule
+    prefer_final_locals: true # Uncomment to enable the `prefer_final_locals` rule
+    prefer_is_empty: true # Uncomment to enable the `prefer_is_empty` rule
+    sort_child_properties_last: true # Uncomment to enable the `sort_child_properties_last` rule
+    sort_constructors_first: true # Uncomment to enable the `sort_constructors_first` rule
+    sort_unnamed_constructors_first: true # Uncomment to enable the `sort_unnamed_constructors_first` rule
+    use_rethrow_when_possible: true # Uncomment to enable the `use_rethrow_when_possible` rule
+    use_setters_to_change_properties: true # Uncomment to enable the `use_setters_to_change_properties` rule
+    use_full_hex_values_for_flutter_colors: true # Uncomment to enable the `use_full_hex_values_for_flutter_colors` rule
+    use_key_in_widget_constructors: true # Uncomment to enable the `use_key_in_widget_constructors` rule
+    use_late_for_private_fields_and_variables: true # Uncomment to enable the `use_late_for_private_fields_and_variables` rule
+    avoid_catching_errors: true # Uncomment to enable the `avoid_catching_errors` rule
+    always_put_control_body_on_new_line: true # Uncomment to enable the `always_put_control_body_on_new_line` rule
+    always_put_required_named_parameters_first: true # Uncomment to enable the `always_put_required_named_parameters_first` rule
+    avoid_empty_else: true # Uncomment to enable the `avoid_empty_else` rule
+    avoid_init_to_null: true # Uncomment to enable the `avoid_init_to_null` rule
+    avoid_relative_lib_imports: true # Uncomment to enable the `avoid_relative_lib_imports` rule
+    avoid_return_types_on_setters: true # Uncomment to enable the `avoid_return_types_on_setters` rule
+    avoid_types_as_parameter_names: true # Uncomment to enable the `avoid_types_as_parameter_names` rule
+    avoid_unused_constructor_parameters: true # Uncomment to enable the `avoid_unused_constructor_parameters` rule
+    avoid_void_async: true # Uncomment to enable the `avoid_void_async` rule
+    camel_case_extensions: true # Uncomment to enable the `camel_case_extensions` rule
+    cancel_subscriptions: true # Uncomment to enable the `cancel_subscriptions` rule
+    use_super_parameters: true # Uncomment to enable the `use_super_parameters` rule
+    prefer_if_elements_to_conditional_expressions: true # Uncomment to enable the `prefer_if_elements_to_conditional_expressions` rule
+    prefer_if_null_operators: true # Uncomment to enable the `prefer_if_null_operators` rule
+    avoid_equals_and_hash_code_on_mutable_classes: true # Uncomment to enable the `avoid_equals_and_hash_code_on_mutable_classes` rule
+    avoid_final_parameters: true # Uncomment to enable the `avoid_final_parameters` rule
+    avoid_function_literals_in_foreach_calls: true # Uncomment to enable the `avoid_function_literals_in_foreach_calls` rule
+    avoid_implementing_value_types: true # Uncomment to enable the `avoid_implementing_value_types` rule
+    avoid_private_typedef_functions: true # Uncomment to enable the `avoid_private_typedef_functions` rule
+    avoid_returning_null: true # Uncomment to enable the `avoid_returning_null` rule
+    avoid_returning_null_for_future: true # Uncomment to enable the `avoid_returning_null_for_future` rule
+    avoid_returning_null_for_void: true # Uncomment to enable the `avoid_returning_null_for_void` rule
+    avoid_setters_without_getters: true # Uncomment to enable the `avoid_setters_without_getters` rule
+    avoid_single_cascade_in_expression_statements: true # Uncomment to enable the `avoid_single_cascade_in_expression_statements` rule
+    avoid_types_on_closure_parameters: true # Uncomment to enable the `avoid_types_on_closure_parameters` rule
+    avoid_unnecessary_containers: true # Uncomment to enable the `avoid_unnecessary_containers` rule
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

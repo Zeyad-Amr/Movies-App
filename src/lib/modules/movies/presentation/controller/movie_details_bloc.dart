@@ -9,38 +9,29 @@ import 'package:movies_app/modules/movies/presentation/controller/movie_details_
 part 'movie_details_event.dart';
 
 class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
-  final GetMovieDetailsUseCase getMovieDetailsUseCase;
-  final GetRecommendationUseCase getRecommendationUseCase;
-  MovieDetailsBloc(this.getMovieDetailsUseCase, this.getRecommendationUseCase)
-      : super(const MovieDetailsState()) {
+  MovieDetailsBloc(this.getMovieDetailsUseCase, this.getRecommendationUseCase) : super(const MovieDetailsState()) {
     on<GetMovieDetailsEvent>(_getMovieDetails);
     on<GetMovieRecommentationEvent>(_getRecommendation);
   }
+  final GetMovieDetailsUseCase getMovieDetailsUseCase;
+  final GetRecommendationUseCase getRecommendationUseCase;
 
-  Future<FutureOr<void>> _getMovieDetails(
-      GetMovieDetailsEvent event, Emitter<MovieDetailsState> emit) async {
-    final result =
-        await getMovieDetailsUseCase(MovieDetailsParameters(event.id));
+  Future<FutureOr<void>> _getMovieDetails(GetMovieDetailsEvent event, Emitter<MovieDetailsState> emit) async {
+    final result = await getMovieDetailsUseCase(MovieDetailsParameters(event.id));
 
     result.fold(
-        (l) => emit(state.copyWith(
-            movieDetailsState: RequestState.error,
-            movieDetailsMessage: l.message)),
+        (l) => emit(state.copyWith(movieDetailsState: RequestState.error, movieDetailsMessage: l.message)),
         (r) => emit(state.copyWith(
               movieDetailsState: RequestState.loaded,
               movieDetails: r,
             )));
   }
 
-  FutureOr<void> _getRecommendation(GetMovieRecommentationEvent event,
-      Emitter<MovieDetailsState> emit) async {
-    final result =
-        await getRecommendationUseCase(RecommendationParameters(event.id));
+  FutureOr<void> _getRecommendation(GetMovieRecommentationEvent event, Emitter<MovieDetailsState> emit) async {
+    final result = await getRecommendationUseCase(RecommendationParameters(event.id));
 
     result.fold(
-        (l) => emit(state.copyWith(
-            recommendationState: RequestState.error,
-            recommendationsMessage: l.message)),
+        (l) => emit(state.copyWith(recommendationState: RequestState.error, recommendationsMessage: l.message)),
         (r) => emit(state.copyWith(
               recommendationState: RequestState.loaded,
               recommendation: r,

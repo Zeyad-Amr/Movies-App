@@ -15,18 +15,18 @@ class MovieDetailsModel extends MovieDetails {
 
   factory MovieDetailsModel.fromJson(Map<String, dynamic> json) {
     return MovieDetailsModel(
-      id: json["id"],
-      title: json["title"],
-      backdropPath: json["backdrop_path"],
+      id: json['id'],
+      title: json['title'],
+      backdropPath: json['backdrop_path'],
       genres: List<GenresModel>.from(
-        (json["genres"] as List).map(
+        (json['genres'] as List).map(
           (e) => GenresModel.fromJson(e),
         ),
       ),
-      overview: json["overview"],
-      runtime: json["runtime"],
-      voteAverage: json["vote_average"].toDouble(),
-      releaseDate: json["release_date"],
+      overview: json['overview'],
+      runtime: json['runtime'],
+      voteAverage: json['vote_average'].toDouble(),
+      releaseDate: json['release_date'],
     );
   }
 }

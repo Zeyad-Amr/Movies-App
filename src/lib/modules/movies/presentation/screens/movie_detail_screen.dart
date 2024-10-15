@@ -12,9 +12,8 @@ import 'package:movies_app/modules/movies/presentation/controller/movie_details_
 import 'package:shimmer/shimmer.dart';
 
 class MovieDetailScreen extends StatelessWidget {
+  const MovieDetailScreen({required this.id, super.key});
   final int id;
-
-  const MovieDetailScreen({Key? key, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +30,8 @@ class MovieDetailScreen extends StatelessWidget {
 
 class MovieDetailContent extends StatelessWidget {
   const MovieDetailContent({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +78,7 @@ class MovieDetailContent extends StatelessWidget {
                         blendMode: BlendMode.dstIn,
                         child: CachedNetworkImage(
                           width: MediaQuery.of(context).size.width,
-                          imageUrl: APIConstants.imageUrl(
-                              state.movieDetails!.backdropPath),
+                          imageUrl: APIConstants.imageUrl(state.movieDetails!.backdropPath),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -132,8 +130,7 @@ class MovieDetailContent extends StatelessWidget {
                                   ),
                                   const SizedBox(width: 4.0),
                                   Text(
-                                    (state.movieDetails!.voteAverage / 2)
-                                        .toStringAsFixed(1),
+                                    (state.movieDetails!.voteAverage / 2).toStringAsFixed(1),
                                     style: const TextStyle(
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.w500,
@@ -226,6 +223,7 @@ class MovieDetailContent extends StatelessWidget {
   String _showGenres(List<Genres> genres) {
     String result = '';
     for (var genre in genres) {
+      // use string buffer
       result += '${genre.name}, ';
     }
 
@@ -260,8 +258,7 @@ class MovieDetailContent extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(4.0)),
                   child: CachedNetworkImage(
-                    imageUrl:
-                        APIConstants.imageUrl(recommendation.backdropPath!),
+                    imageUrl: APIConstants.imageUrl(recommendation.backdropPath!),
                     placeholder: (context, url) => Shimmer.fromColors(
                       baseColor: Colors.grey[850]!,
                       highlightColor: Colors.grey[800]!,
@@ -274,8 +271,7 @@ class MovieDetailContent extends StatelessWidget {
                         ),
                       ),
                     ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                     height: 180.0,
                     fit: BoxFit.cover,
                   ),

@@ -9,7 +9,7 @@ import 'package:movies_app/modules/movies/presentation/controller/movies_bloc.da
 import 'package:movies_app/modules/movies/presentation/controller/movies_event.dart';
 
 class MainMoviesScreen extends StatelessWidget {
-  const MainMoviesScreen({Key? key}) : super(key: key);
+  const MainMoviesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class MainMoviesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Popular",
+                      'Popular',
                       style: GoogleFonts.poppins(
                         fontSize: 19,
                         fontWeight: FontWeight.w500,
@@ -44,10 +44,10 @@ class MainMoviesScreen extends StatelessWidget {
                       onTap: () {
                         /// TODO : NAVIGATION TO POPULAR SCREEN
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Row(
-                          children: const [
+                          children: [
                             Text(
                               'See More',
                               style: TextStyle(
@@ -78,7 +78,7 @@ class MainMoviesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Top Rated",
+                      'Top Rated',
                       style: GoogleFonts.poppins(
                         fontSize: 19,
                         fontWeight: FontWeight.w500,
@@ -90,10 +90,10 @@ class MainMoviesScreen extends StatelessWidget {
                       onTap: () {
                         /// TODO : NAVIGATION TO Top Rated Movies Screen
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Row(
-                          children: const [
+                          children: [
                             Text(
                               'See More',
                               style: TextStyle(

@@ -4,6 +4,18 @@ import 'package:movies_app/core/utils/enums.dart';
 import 'package:movies_app/modules/movies/domain/entities/movie.dart';
 
 class MoviesState extends Equatable {
+  const MoviesState({
+    this.popularMovies = const [],
+    this.popularState = RequestState.loading,
+    this.popularMessage = '',
+    this.topRatedMovies = const [],
+    this.topRatedState = RequestState.loading,
+    this.topRatedMessage = '',
+    this.nowPlayingMovies = const [],
+    this.nowPlayingState = RequestState.loading,
+    this.nowPlayingMessage = '',
+  });
+
   /// now playing movies state
   final List<Movie> nowPlayingMovies;
   final RequestState nowPlayingState;
@@ -18,18 +30,6 @@ class MoviesState extends Equatable {
   final List<Movie> topRatedMovies;
   final RequestState topRatedState;
   final String topRatedMessage;
-
-  const MoviesState({
-    this.popularMovies = const [],
-    this.popularState = RequestState.loading,
-    this.popularMessage = '',
-    this.topRatedMovies = const [],
-    this.topRatedState = RequestState.loading,
-    this.topRatedMessage = '',
-    this.nowPlayingMovies = const [],
-    this.nowPlayingState = RequestState.loading,
-    this.nowPlayingMessage = '',
-  });
 
   @override
   List<Object> get props {

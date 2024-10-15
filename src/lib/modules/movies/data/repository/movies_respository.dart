@@ -10,9 +10,8 @@ import 'package:movies_app/modules/movies/domain/usecases/get_movie_details_usec
 import 'package:movies_app/modules/movies/domain/usecases/get_recommendation_usecase.dart';
 
 class MoviesRepository extends BaseMoviesRepository {
-  final BaseMovieRemoteDataSource baseMovieRemoteDataSource;
-
   MoviesRepository(this.baseMovieRemoteDataSource);
+  final BaseMovieRemoteDataSource baseMovieRemoteDataSource;
 
   @override
   Future<Either<Failure, List<Movie>>> getNowPlayingMovies() async {
@@ -45,8 +44,7 @@ class MoviesRepository extends BaseMoviesRepository {
   }
 
   @override
-  Future<Either<Failure, MovieDetails>> getMovieDetails(
-      MovieDetailsParameters parameters) async {
+  Future<Either<Failure, MovieDetails>> getMovieDetails(MovieDetailsParameters parameters) async {
     final result = await baseMovieRemoteDataSource.getMovieDetails(parameters);
     try {
       return Right(result);
@@ -56,10 +54,8 @@ class MoviesRepository extends BaseMoviesRepository {
   }
 
   @override
-  Future<Either<Failure, List<Recommendation>>> getRecommentation(
-      RecommendationParameters parameters) async {
-    final result =
-        await baseMovieRemoteDataSource.getRecommendation(parameters);
+  Future<Either<Failure, List<Recommendation>>> getRecommentation(RecommendationParameters parameters) async {
+    final result = await baseMovieRemoteDataSource.getRecommendation(parameters);
     try {
       return Right(result);
     } on ServerException catch (failure) {

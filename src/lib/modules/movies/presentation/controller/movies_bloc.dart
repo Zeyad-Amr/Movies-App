@@ -10,12 +10,7 @@ import 'package:movies_app/modules/movies/presentation/controller/movies_event.d
 import 'package:movies_app/modules/movies/presentation/controller/movies_state.dart';
 
 class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
-  final GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
-  final GetPopularMoviesUseCase getPopularMoviesUseCase;
-  final GetTopRatedMoviesUseCase getTopRatedMoviesUseCase;
-
-  MoviesBloc(this.getNowPlayingMoviesUseCase, this.getPopularMoviesUseCase,
-      this.getTopRatedMoviesUseCase)
+  MoviesBloc(this.getNowPlayingMoviesUseCase, this.getPopularMoviesUseCase, this.getTopRatedMoviesUseCase)
       : super(const MoviesState()) {
     on<GetNowPlayingMoviesEvent>(_getNowPlayingMovies);
 
@@ -23,9 +18,11 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
 
     on<GetTopRatedMoviesEvent>(_getTopRatedMovies);
   }
+  final GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
+  final GetPopularMoviesUseCase getPopularMoviesUseCase;
+  final GetTopRatedMoviesUseCase getTopRatedMoviesUseCase;
 
-  Future<FutureOr<void>> _getNowPlayingMovies(
-      GetNowPlayingMoviesEvent event, Emitter<MoviesState> emit) async {
+  Future<FutureOr<void>> _getNowPlayingMovies(GetNowPlayingMoviesEvent event, Emitter<MoviesState> emit) async {
     final result = await getNowPlayingMoviesUseCase(const NoParameters());
 
     result.fold(
@@ -44,8 +41,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     );
   }
 
-  Future<FutureOr<void>> _getPopularMovies(
-      GetPopularMoviesEvent event, Emitter<MoviesState> emit) async {
+  Future<FutureOr<void>> _getPopularMovies(GetPopularMoviesEvent event, Emitter<MoviesState> emit) async {
     final result = await getPopularMoviesUseCase(const NoParameters());
 
     result.fold(
@@ -64,8 +60,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     );
   }
 
-  Future<FutureOr<void>> _getTopRatedMovies(
-      GetTopRatedMoviesEvent event, Emitter<MoviesState> emit) async {
+  Future<FutureOr<void>> _getTopRatedMovies(GetTopRatedMoviesEvent event, Emitter<MoviesState> emit) async {
     final result = await getTopRatedMoviesUseCase(const NoParameters());
 
     result.fold(
